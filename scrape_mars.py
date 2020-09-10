@@ -11,7 +11,7 @@ def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def scrape():
+def scrape_info():
     browser = init_browser()
     
     # Title and paragraphs
@@ -90,10 +90,12 @@ def scrape():
 
     hemisphere_img_urls
 
-    mongo_dict = {"News Title": news_title, 
+    mars_data = {"News Title": news_title, 
     "News Paragraph": news_paragraph, 
     "Featured Image": featured_image_url, 
     "Mars Table Facts": df, 
     "Hemisphere_Image_URLs": hemisphere_img_urls}
 
     browser.quit()
+
+    return mars_data
